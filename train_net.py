@@ -56,7 +56,7 @@ def do_test(cfg, model):
         elif evaluator_type == 'coco':
             evaluator = COCOEvaluator(dataset_name, cfg, True, output_folder)
         else:
-            assert 0, evaluator_type
+            evaluator = COCOEvaluator(dataset_name, cfg, True, output_folder)
             
         results[dataset_name] = inference_on_dataset(
             model, data_loader, evaluator)

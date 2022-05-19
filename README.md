@@ -1,14 +1,7 @@
-# Probabilistic two-stage detection
-Two-stage object detectors that use class-agnostic one-stage detectors as the proposal network.
+# ICRA 2021 RoboMaster AI Challenge
+该项目是ICRA2021 AI Challenge **同舟共济的哥哥**战队的Perception功能代码展示
 
-
-<p align="center"> <img src='docs/centernet2_teaser.jpg' align="center" height="150px"> </p>
-
-> [**Probabilistic two-stage detection**](http://arxiv.org/abs/2103.07461),            
-> Xingyi Zhou, Vladlen Koltun, Philipp Kr&auml;henb&uuml;hl,        
-> *arXiv technical report ([arXiv 2103.07461](http://arxiv.org/abs/2103.07461))*         
-
-Contact: [zhouxy@cs.utexas.edu](mailto:zhouxy@cs.utexas.edu). Any questions or discussions are welcomed! 
+Contact: [ru_yi_zhao@163.com](ru_yi_zhao@163.com). Any questions or discussions are welcomed! 
 
 ## Summary
 
