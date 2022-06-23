@@ -1,5 +1,5 @@
 # ICRA 2021 RoboMaster AI Challenge
-该项目是ICRA2021 AI Challenge **同舟共济的哥哥**战队的Perception功能代码展示
+该项目是ICRA2021 AI Challenge **同舟共济的哥哥**战队的**感知、定位、导航、决策**技术方案中的**感知**功能代码展示
 
 Contact: [ru_yi_zhao@163.com](mailto:ru_yi_zhao@163.com). Any questions or discussions are welcomed! 
 
