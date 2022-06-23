@@ -1,74 +1,24 @@
 # ICRA 2021 RoboMaster AI Challenge
-该项目是ICRA2021 AI Challenge **同舟共济的哥哥**战队的**感知、定位、导航、决策**技术方案中的**感知**功能代码展示
+该项目是ICRA2021 RoboMaster AI Challenge **同舟共济的哥哥**战队的**感知、定位、导航、决策、规划**技术方案中的**感知**功能代码展示
 
 Contact: [ru_yi_zhao@163.com](mailto:ru_yi_zhao@163.com). Any questions or discussions are welcomed! 
 
-## Summary
+## 目录
 
-- Two-stage CenterNet: First stage estimates object probabilities, second stage conditionally classifies objects.
+- [比赛介绍](#比赛介绍)
+- [感知功能介绍](#依赖环境及运行方式)
+- [文件目录说明](#文件目录说明)
+- [开源协议](#开源协议)
+- [鸣谢](#鸣谢)
 
-- Resulting detector is faster and more accurate than both traditional two-stage detectors (fewer proposals required), and one-stage detectors (lighter first stage head).
+### 比赛介绍
+ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.robomaster.com/zh-CN/robo/icra?djifrom=nav), RoboMaster University AI Challenge）
+自2017年起已连续五年由 DJI RoboMaster 组委会与全球机器人和自动化大会联合主办，并先后在新加坡、澳大利亚、加拿大和中国西安落地执行。该赛事吸引了全球大量顶尖学府、科研机构
+参与竞赛和学术研讨，进一步扩大了 RoboMaster 在国际机器人学术领域的影响力。比赛需要参赛队综合运用机械、电控和算法等技术知识，自主研发全自动射击机器人参赛，对综合技术能力要求极高。
 
-- Our best model achieves 56.4 mAP on COCO test-dev.
+组委会提供统一标准的机器人平台，该机器人平台具备发射弹丸、攻击检测等统一标准的接口。参加比赛
+的队伍需自行研发算法，配合搭载的传感器和运算设备来实现机器人的**自主决策、运动、射击**。参赛队伍需要准备一到两台机器人，
+在 5.1m * 8.1m 的比赛场地上进行全自动射击对抗。比赛过程中，机器人通过识别并发射弹丸击
+打对方的装甲模块，以减少对方的血量。比赛结束时，机器人总伤害量高的一方获得比赛胜利。
 
-- This repo also includes a detectron2-based CenterNet implementation with better accuracy (42.5 mAP at 70FPS) and a new FPN version of CenterNet (40.2 mAP with Res50_1x).
-
-## Main results
-
-All models are trained with multi-scale training, and tested with a single scale. The FPS is tested on a Titan RTX GPU.
-More models and details can be found in the [MODEL_ZOO](docs/MODEL_ZOO.md).
-
-#### COCO
-
-| Model                                     |  COCO val mAP |  FPS  |
-|-------------------------------------------|---------------|-------|
-| CenterNet-S4_DLA_8x                       |  42.5         |   71  |
-| CenterNet2_R50_1x                         |  42.9         |   24  |
-| CenterNet2_X101-DCN_2x                    |  49.9         |    8  |
-| CenterNet2_R2-101-DCN-BiFPN_4x+4x_1560_ST |  56.1         |    5  |
-| CenterNet2_DLA-BiFPN-P5_24x_ST            |  49.2         |   38  |
-
-
-#### LVIS 
-
-| Model                     | val mAP box |
-| ------------------------- | ----------- |
-| CenterNet2_R50_1x         | 26.5        |
-| CenterNet2_FedLoss_R50_1x | 28.3        |
-
-
-#### Objects365
-
-| Model                                     |  val mAP |
-|-------------------------------------------|----------|
-| CenterNet2_R50_1x                         |  22.6    |
-
-## Installation
-
-Our project is developed on [detectron2](https://github.com/facebookresearch/detectron2). Please follow the official detectron2 [installation](https://github.com/facebookresearch/detectron2/blob/master/INSTALL.md).
-
-We use the default detectron2 demo script. To run inference on an image folder using our pre-trained model, run
-
-~~~
-python demo.py --config-file configs/CenterNet2_R50_1x.yaml --input path/to/image/ --opts MODEL.WEIGHTS models/CenterNet2_R50_1x.pth
-~~~
-
-## Benchmark evaluation and training
-
-Please check detectron2 [GETTING_STARTED.md](https://github.com/facebookresearch/detectron2/blob/master/GETTING_STARTED.md) for running evaluation and training. Our config files are under `configs` and the pre-trained models are in the [MODEL_ZOO](docs/MODEL_ZOO.md).
-
-
-## License
-
-Our code is under [Apache 2.0 license](LICENSE). `centernet/modeling/backbone/bifpn_fcos.py` are from [AdelaiDet](https://github.com/aim-uofa/AdelaiDet), which follows the original [non-commercial license](https://github.com/aim-uofa/AdelaiDet/blob/master/LICENSE).
-
-## Citation
-
-If you find this project useful for your research, please use the following BibTeX entry.
-
-    @inproceedings{zhou2021probablistic,
-      title={Probabilistic two-stage detection},
-      author={Zhou, Xingyi and Koltun, Vladlen and Kr{\"a}henb{\"u}hl, Philipp},
-      booktitle={arXiv preprint arXiv:2103.07461},
-      year={2021}
-    }
+![introduction](./figs/intro.jpg)
