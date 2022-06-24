@@ -37,8 +37,21 @@ from detectron2.data.build import build_detection_train_loader
 
 from centernet.config import add_centernet_config
 from centernet.data.custom_build_augmentation import build_custom_augmentation
+from detectron2.data.datasets import register_coco_instances
 
 logger = logging.getLogger("detectron2")
+
+register_coco_instances('robot_train', {},
+                        '/media/disk2/zry/CenterNet2/datasets/robot/annotations/instances_train2017.json',
+                        '/media/disk2/zry/CenterNet2/datasets/robot/train2017')
+register_coco_instances('robot_val', {},
+                        '/media/disk2/zry/CenterNet2/datasets/robot/annotations/instances_val2017.json',
+                        '/media/disk2/zry/CenterNet2/datasets/robot/val2017')
+MetadataCatalog.get("robot_train").thing_classes = ["dead", "red", "blue", "dead1", "red1", "blue1", "dead2", "red2",
+                                                    "blue2"]
+MetadataCatalog.get("robot_val").thing_classes = ["dead", "red", "blue", "dead1", "red1", "blue1", "dead2", "red2",
+                                                  "blue2"]
+
 
 def do_test(cfg, model):
     results = OrderedDict()
@@ -57,7 +70,7 @@ def do_test(cfg, model):
             evaluator = COCOEvaluator(dataset_name, cfg, True, output_folder)
         else:
             evaluator = COCOEvaluator(dataset_name, cfg, True, output_folder)
-            
+
         results[dataset_name] = inference_on_dataset(
             model, data_loader, evaluator)
         if comm.is_main_process():
@@ -67,6 +80,7 @@ def do_test(cfg, model):
     if len(results) == 1:
         results = list(results.values())[0]
     return results
+
 
 def do_train(cfg, model, resume=False):
     model.train()
@@ -78,8 +92,8 @@ def do_train(cfg, model, resume=False):
     )
 
     start_iter = (
-        checkpointer.resume_or_load(
-            cfg.MODEL.WEIGHTS, resume=resume,
+            checkpointer.resume_or_load(
+                cfg.MODEL.WEIGHTS, resume=resume,
             ).get("iteration", -1) + 1
     )
     if cfg.SOLVER.RESET_ITER:
@@ -101,15 +115,13 @@ def do_train(cfg, model, resume=False):
         else []
     )
 
-
     mapper = DatasetMapper(cfg, True) if cfg.INPUT.CUSTOM_AUG == '' else \
         DatasetMapper(cfg, True, augmentations=build_custom_augmentation(cfg, True))
     if cfg.DATALOADER.SAMPLER_TRAIN in ['TrainingSampler', 'RepeatFactorTrainingSampler']:
         data_loader = build_detection_train_loader(cfg, mapper=mapper)
     else:
-        from centernet.data.custom_dataset_dataloader import  build_custom_train_loader
+        from centernet.data.custom_dataset_dataloader import build_custom_train_loader
         data_loader = build_custom_train_loader(cfg, mapper=mapper)
-
 
     logger.info("Starting training from iteration {}".format(start_iter))
     with EventStorage(start_iter) as storage:
@@ -129,7 +141,7 @@ def do_train(cfg, model, resume=False):
             assert torch.isfinite(losses).all(), loss_dict
 
             loss_dict_reduced = {k: v.item() \
-                for k, v in comm.reduce_dict(loss_dict).items()}
+                                 for k, v in comm.reduce_dict(loss_dict).items()}
             losses_reduced = sum(loss for loss in loss_dict_reduced.values())
             if comm.is_main_process():
                 storage.put_scalars(
@@ -148,15 +160,15 @@ def do_train(cfg, model, resume=False):
             scheduler.step()
 
             if (
-                cfg.TEST.EVAL_PERIOD > 0
-                and iteration % cfg.TEST.EVAL_PERIOD == 0
-                and iteration != max_iter
+                    cfg.TEST.EVAL_PERIOD > 0
+                    and iteration % cfg.TEST.EVAL_PERIOD == 0
+                    and iteration != max_iter
             ):
                 do_test(cfg, model)
                 comm.synchronize()
 
             if iteration - start_iter > 5 and \
-                (iteration % 20 == 0 or iteration == max_iter):
+                    (iteration % 20 == 0 or iteration == max_iter):
                 for writer in writers:
                     writer.write()
             periodic_checkpointer.step(iteration)
@@ -165,6 +177,7 @@ def do_train(cfg, model, resume=False):
         logger.info(
             "Total training time: {}".format(
                 str(datetime.timedelta(seconds=int(total_time)))))
+
 
 def setup(args):
     """

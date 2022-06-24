@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" serverName="amax@100.64.254.73:22" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="amax@100.64.254.73:22">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/media/disk2/zry/CenterNet2" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
