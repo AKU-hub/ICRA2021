@@ -32,4 +32,8 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
     + 配置: 大恒工业相机和USB相机
     + 功能: 负责检测敌方装甲板, 直接决定射击方向
 
-![robot](./figs/robot.png)
+<p align="center">
+  <a>
+    <img src="./figs/robot.png" alt="robot" width="600" height="300">
+  </a>
+  <h3 align="center">RM AI机器人</h3> </p>
