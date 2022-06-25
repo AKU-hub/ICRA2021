@@ -54,3 +54,9 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
 信息。两个哨岗和两个机器人的信息经过信息融合模块，最终输出4个机器人的信息。
 
 ![pipeline](./figs/pipeline.png)
+
+### 3.检测模型
+![visualized](./figs/test.gif)
+
+
+

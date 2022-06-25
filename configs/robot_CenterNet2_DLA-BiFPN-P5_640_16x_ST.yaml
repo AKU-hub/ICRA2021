@@ -8,7 +8,7 @@ MODEL:
     NUM_BIFPN: 3
   CENTERNET:
     POST_NMS_TOPK_TEST: 128
-  WEIGHTS: ''
+  WEIGHTS: './output/CenterNet2/coco_robot_DLA-BiFPN-P5_640_16x_ST/model_final.pth'
   PIXEL_MEAN: [123.675, 116.280, 103.530]
   PIXEL_STD: [58.395, 57.12, 57.375]
   FPN:
@@ -20,10 +20,10 @@ SOLVER:
   MAX_ITER: 11000
   BASE_LR: 0.08
   STEPS: (4000, 8000)
-  IMS_PER_BATCH: 64
+  IMS_PER_BATCH: 32
   RESET_ITER: True
 TEST:
-  EVAL_PERIOD: 7500
+  EVAL_PERIOD: 100
 INPUT:
   FORMAT: RGB
   CUSTOM_AUG: EfficientDetResizeCrop
@@ -35,3 +35,4 @@ INPUT:
 DATASETS:
   TRAIN: ("robot_train",)
   TEST: ("robot_val",)
+OUTPUT_DIR: "./output/CenterNet2/coco_robot_DLA-BiFPN-P5_640_16x_ST"

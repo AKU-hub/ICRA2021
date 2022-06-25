@@ -20,6 +20,12 @@ from detectron2.utils.video_visualizer import VideoVisualizer
 from detectron2.utils.visualizer import ColorMode, Visualizer
 from detectron2.data import MetadataCatalog
 
+MetadataCatalog.get("robot_train").thing_classes = ["dead", "red", "blue", "dead1", "red1", "blue1", "dead2", "red2",
+                                                    "blue2"]
+MetadataCatalog.get("robot_val").thing_classes = ["dead", "red", "blue", "dead1", "red1", "blue1", "dead2", "red2",
+                                                  "blue2"]
+
+
 def setup_cfg(args):
     # load config from file and command-line arguments
     cfg = get_cfg()
@@ -83,6 +89,7 @@ if __name__ == "__main__":
         if len(args.input) == 1:
             args.input = glob.glob(os.path.expanduser(args.input[0]))
             files = os.listdir(args.input[0])
+            files.sort()
             args.input = [args.input[0] + x for x in files]
             assert args.input, "The input path(s) was not found"
         visualizer = VideoVisualizer(
@@ -120,12 +127,12 @@ if __name__ == "__main__":
                     if output_file is None:
                         width = visualized_output.get_image().shape[1]
                         height = visualized_output.get_image().shape[0]
-                        frames_per_second = 15
+                        frames_per_second = 5
                         output_file = cv2.VideoWriter(
                             filename=args.output,
                             # some installation of opencv may not support x264 (due to its license),
                             # you can try other format (e.g. MPEG)
-                            fourcc=cv2.VideoWriter_fourcc(*"x264"),
+                            fourcc=cv2.VideoWriter_fourcc(*"MJPG"),
                             fps=float(frames_per_second),
                             frameSize=(width, height),
                             isColor=True,
