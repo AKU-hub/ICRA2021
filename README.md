@@ -7,7 +7,7 @@ Contact: [ru_yi_zhao@163.com](mailto:ru_yi_zhao@163.com). Any questions or discu
 
 - [比赛简介](#比赛简介)
 - [感知系统](#感知系统)
-- [文件目录说明](#文件目录说明)
+- [哨岗算法](#哨岗算法)
 - [开源协议](#开源协议)
 - [鸣谢](#鸣谢)
 
@@ -37,3 +37,7 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
     <img src="./figs/robot.png" alt="robot" width="600" height="300">
   </a>
   <h3 align="center">RM AI机器人</h3> </p>
+
+## 哨岗算法
+
+
