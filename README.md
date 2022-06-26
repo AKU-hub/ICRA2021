@@ -56,7 +56,7 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
 ![pipeline](./figs/pipeline.png)
 
 ### 3.检测模型
-+ 设计思路
++ **设计思路**
     + 首先是**算法选型**: 理论上由于赛场上瞬息万变, 检测fps应越高越好(后期发现大多数队伍都是遵循这个原则, 有的甚至超过了1000fps), 
     但是经我们仔细研究场地发现, 哨岗其实主要用于当敌方消失在机载相机视野时以及执行特殊战术决策时(比如绕后), 因此并不需要
     太高fps, 反而更倾向于高精度, 因为错误的感知信息会严重影响决策系统。所以, 我们最终选择了当时的SOTA检测算法
@@ -68,10 +68,22 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
     的是, 当某个机器人被干掉时, 颜色会熄灭, 这就诞生了第三种颜色, 因此颜色为red、blue、black。所有label如下所示:
 ![label](./figs/label.png)
 
-+ 模型介绍
++ **模型介绍**
 
     ![model](./figs/CenterNet2.png)
+    + **数据增强**
+        + [Albumentations](https://github.com/albumentations-team/albumentations): 因机器人对颜色敏感, 去掉色彩类增强
+        + [Imagecorruptions](https://github.com/bethgelab/imagecorruptions): 增加鲁棒性
+        + [Mosiac](https://github.com/Tianxiaomo/pytorch-YOLOv4): 离线生成, 扩充数据集, 变相增加BS
+        + [Mixup](https://github.com/facebookresearch/mixup-cifar10): 让模型更加鲁棒性的区分很相近的类别
+    + **自分类器**: 本次比赛颜色是区分阵营的唯一办法, 因此分类性能尤为重要, 为进一步提升分类性能, 我们设计了一个自分类器。
+    首先，通过裁剪ground-truth边界框得到图像patch, 并将每个patch的大小调整为64*64来构建训练集, 然后选择ResNet18作为分类器网络(实验验证约有1%
+    的提点)。
 
++ **检测结果**
+
+
++ **运行效果图**
 ![visualized](./figs/test.gif)
 
 
