@@ -93,12 +93,12 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
 
 ### 4.姿态估计
 + **算法流程**
-![pose](./figs/pose.png)
+![pose](./figs/pose.png#pic_center =300x300)
     
 + **位姿结果**
 
 | Class|Accuracy|
-|:-:|--------|
+|:-:|:-:|
 | 0 |83.2%|
 | 1 |88.8%|
 | 2 |84.7%|
