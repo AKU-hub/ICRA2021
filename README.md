@@ -97,7 +97,7 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
   <a>
     <img src="./figs/pose.png" alt="pose" width="700" height="600">
   </a>
-  <h3 align="center">RM AI机器人</h3> </p>
+</p>
     
 + **位姿结果**
 
