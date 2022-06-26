@@ -81,7 +81,7 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
     的提点)。
 
 + **检测结果**
-
+![map](./figs/map.png)
 
 + **运行效果图**
 ![visualized](./figs/test.gif)
