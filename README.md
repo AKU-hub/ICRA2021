@@ -84,10 +84,12 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
     的提点)。
 
 + **检测结果**
-![map](./figs/map.png)
+
+    ![map](./figs/map.png)
     + 受条件限制, 我们是在地下室搭建的场地, 因此拍出来的图像质量较差, 实际赛场上AP可达到90%以上
 + **运行效果图**
-![visualized](./figs/test.gif)
+
+    ![visualized](./figs/test.gif)
 
 ### 4.姿态估计
 + **算法流程**
