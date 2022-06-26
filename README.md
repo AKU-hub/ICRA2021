@@ -1,3 +1,8 @@
+<style>
+table {
+margin: auto;
+}
+</style>
 # ICRA 2021 RoboMaster AI Challenge
 该项目是ICRA2021 RoboMaster AI Challenge **同舟共济的哥哥**战队的**感知、定位、导航、决策、规划**技术方案中的**感知**功能代码展示
 
@@ -92,7 +97,6 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
     
 + **位姿结果**
 
-<p align="center">
 | Class|Accuracy|
 |------|--------|
 | 0 |83.2%|
@@ -103,4 +107,3 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
 | 5 |85.8%|
 | 6 |89.5%|
 | 7 |94.6%|
-</p>
