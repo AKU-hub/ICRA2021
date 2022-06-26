@@ -13,8 +13,7 @@ Contact: [ru_yi_zhao@163.com](mailto:ru_yi_zhao@163.com). Any questions or discu
 - [比赛简介](#比赛简介)
 - [感知系统](#感知系统)
 - [哨岗算法](#哨岗算法)
-- [开源协议](#开源协议)
-- [鸣谢](#鸣谢)
+- [赛事总结](#赛事总结)
 
 ## 比赛简介
 ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.robomaster.com/zh-CN/robo/icra?djifrom=nav), RoboMaster University AI Challenge）
@@ -93,11 +92,16 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
 
 ### 4.姿态估计
 + **算法流程**
+    + **Pipeline**: 由检测模型输出机器人检测框bbox, 根据bbox得到机器人图像patch, resize为64*64, 输入
+    到ResNet18姿态分类网络, 得到姿态类别
+    + **Training**: 根据机器人GT裁剪图像patch, resize, 打标, 训练
 <p align="center">
   <a>
     <img src="./figs/pose.png" alt="pose" width="700" height="600">
   </a>
 </p>
+
+
     
 + **位姿结果**
 
@@ -111,3 +115,12 @@ ICRA RoboMaster 机甲大师高校人工智能挑战赛（[RMUA](https://www.rob
 | 5 |85.8%|
 | 6 |89.5%|
 | 7 |94.6%|
+
+### 5.工程后处理
+
+<p align="center">
+  <a>
+    <img src="./figs/post.png" alt="postprocess" width="600" height="700">
+  </a>
+</p>
+
