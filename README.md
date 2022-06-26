@@ -1,8 +1,3 @@
-<style>
-table {
-margin: auto;
-}
-</style>
 # ICRA 2021 RoboMaster AI Challenge
 该项目是ICRA2021 RoboMaster AI Challenge **同舟共济的哥哥**战队的**感知、定位、导航、决策、规划**技术方案中的**感知**功能代码展示
 
